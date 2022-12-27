@@ -1,0 +1,191 @@
+#include <stdio.h>
+#include <stdlib.h>
+typedef struct dll
+{
+	struct dll *prev;
+	int data;
+	struct dll *next;
+}dll;
+dll *head = NULL;
+dll *tail = NULL;
+dll *getnode();
+void insert_at_beg();
+void display();
+void insert_at_end();
+void insert_at_pos();
+void del_at_beg();
+void del_at_end();
+void del_at_pos();
+void len();
+void main()
+{
+	int ch;
+	while(1)
+	{
+		printf("\n1.Insert at begining\n2.Display\n3.Insert at end\n4.Insert at given position\n5.Delete an element at begining\n6.Delete an element at end\n7.Delete an element at a given position\n8.Length of dll\n9.Exit\nEnter choice :");
+		scanf("%d", &ch);
+		switch(ch)
+		{
+			case 1: printf("Insertion at begining");
+				insert_at_beg();
+				break;
+			case 2: printf("Displaying elements : ");
+				display();
+				break;
+			case 3: printf("Insertion at end");
+				insert_at_end();
+				break;
+			case 4: printf("Insertion at a given position");
+				insert_at_pos();
+				break;
+			case 5: printf("Deletion at begining");
+				del_at_beg();
+				break;
+			case 6: printf("Deletion at end");
+				del_at_end();
+				break;
+			case 7: printf("Deletion at a given position");
+				del_at_pos();
+				break;
+			case 8: printf("Length of dll");
+				len();
+				break;
+			case 9: printf("Exited");
+				exit(0);
+			default: printf("Invalid choice!!");
+                }
+	}
+}
+dll *getnode()
+{
+	dll *new = (dll*)malloc(sizeof(dll));
+	printf("\nEnter element : ");
+	scanf("%d", &new->data);
+	new->prev = NULL;
+	new->next = NULL;
+	return new;
+}
+void insert_at_beg()
+{
+	dll *new = getnode();
+	if(head == NULL)
+	{
+		head = new;
+		tail = new;
+	}
+	else
+	{
+		new->next = head;
+		head->prev = new;
+		head = new;
+	}
+}
+void display()
+{
+	dll *curr = head;
+	while(curr->next != NULL)
+	{
+		printf("\t%d", curr->data);
+		curr = curr->next;
+	}
+	printf("\t%d", curr->data);
+}
+void insert_at_end()
+{
+	dll *new = getnode();
+	if(head == NULL)
+	{
+		head = new;
+		tail = new;
+	}
+	else
+	{
+		tail->next = new;
+		new->prev = tail;
+		tail = new;
+	}
+}
+void insert_at_pos()
+{
+	dll *new = getnode();
+	dll *temp = head;
+	int k, i;
+	printf("\nEnter the position of element to be inserted :");
+	scanf("%d", &k);
+	for(i = 1; i < k - 1; i++)
+	{
+		temp = temp->next;
+	}
+	new->next = temp->next;
+	temp->next->prev = new;
+	new->prev = temp;
+	temp->next = new;
+}
+void del_at_beg()
+{
+	dll *temp1 = head;
+	if(head == NULL)
+	{
+		printf("\nThere are no nodes to delete!");
+	}
+	else if(head->next == NULL)
+	{
+		head = NULL;
+		tail = NULL;
+		free(temp1);
+	}
+	else
+	{
+		head->next->prev = NULL;
+		head = head->next;
+		free(temp1);
+	}
+}
+void del_at_end()
+{
+	dll *t = tail;
+	if(head == NULL)
+	{
+		printf("\nThere are no nodes to delete!");
+	}
+	else if(head->next == NULL)
+	{
+		head = NULL;
+		tail = NULL;
+		free(t);
+	}
+	else
+	{
+		tail->prev->next = NULL;
+		tail = tail->prev;
+		free(t);
+	}
+}
+void del_at_pos()
+{
+	dll *temp2 = head;
+	dll *t1;
+	int p, i;
+	printf("\nEnter the position of element to be deleted : ");
+	scanf("%d", &p);
+	for(i = 1; i < p - 1; i++)
+	{
+		temp2 = temp2->next;
+	}
+	t1 = temp2->next;
+	temp2->next->next->prev = temp2;
+	temp2->next = temp2->next->next;
+	free(t1);
+}
+void len()
+{
+	dll *curr = head;
+	int count = 0;
+	while(curr->next != NULL)
+	{
+		count++;
+		curr = curr->next;
+	}
+	printf("\nLength of dll till now is : %d", count + 1);
+}
+
