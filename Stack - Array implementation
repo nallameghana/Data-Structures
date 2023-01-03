@@ -1,0 +1,86 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define MAX 5
+static int top = -1;
+int A[MAX];
+void push();
+void display();
+void pop();
+void len();
+void peek();
+void main()
+{
+	int ch;
+	while(1)
+	{
+	printf("\n1.Push\n2.Display\n3.pop\n4.length\n5.peek\n6.Exit\nEnter choice : ");
+	scanf("%d", &ch);	
+	switch(ch)
+	{
+		case 1: printf("\nInserting an element in stack");
+			push();
+			break;
+		case 2: printf("\nDisplaying the elements : ");
+			display();
+			break;
+		case 3: printf("\nDeleting the last element in stack");
+			pop();
+			break;
+		case 4: printf("\nLength of stack");
+			len();
+			break;
+		case 5: printf("\nPeek element");
+			peek();
+			break;
+		case 6: printf("\nExited");
+			exit(-1);
+			break;
+		default: printf("\nInvaild Choice!!");
+	}
+	}
+}
+void push()
+{
+	int ele;
+	printf("\nEnter element : ");
+	scanf("%d", &ele);
+	if(top >= (MAX - 2))
+	{
+		printf("\nStack is full\n");
+		exit(-1);
+	}
+	else
+	{
+		A[top + 1] = ele;
+		top++;
+	}
+}
+void display()
+{
+	int i;
+	for(i = 0; i <= top; i++)
+	{
+		printf("%d\t", A[i]);
+	}
+
+}
+void pop()
+{
+	if(top == -1)
+	{
+		printf("\nStack is empty");
+	}
+	else
+	{
+		top = top - 1;
+	}
+}
+void len()
+{
+	printf("\nLength of stack till now is : %d", top + 1);
+}
+void peek()
+{
+	printf("\nPeek element is : %d", A[top]);
+}
+
