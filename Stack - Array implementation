@@ -46,7 +46,7 @@ void push()
 	scanf("%d", &ele);
 	if(top >= (MAX - 1))
 	{
-		printf("\nStack is full\n");
+		printf("\nStack is full,Can't insert the above element.\n");
 		exit(-1);
 	}
 	else
