@@ -25,7 +25,7 @@ void main()
                 break;
         case 2 :de();
                 break;
-        case 3: printf("Elements of dequeue are : ");
+        case 3: printf("Elements of queue are : ");
                 display();
                 break;
         case 4: printf("Length of queue till now is : ");
