@@ -116,7 +116,7 @@ Node *search(Node *node, int key)
 		printf("\nKey found");
 		return node;
 	}
-	else if(node->right == NULL)
+	else if(node == NULL)
 	{
 		printf("\nKey not found");
 		return node;
