@@ -176,7 +176,7 @@ Node *deletenode(Node *node, int key)
     {
         Node *minnode = getminnode(node->right);
         node->value = minnode->value;
-        node->right = deletenode(minnode, minnode->value);
+        node->right = deletenode(node->right, minnode->value);
     }
     return node;
 }
