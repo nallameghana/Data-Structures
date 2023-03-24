@@ -29,7 +29,7 @@ void main()
     }
     else
     {
-        if(i < n - m)
+        if(i <= n - m)
         {
             i++;
             j = 0;
