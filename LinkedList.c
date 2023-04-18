@@ -16,12 +16,13 @@ void del_at_beg();
 void del_at_end();
 void del_at_pos();
 void len();
+void search();
 void main()
 {
     int ch;
     while(1)
     {
-        printf("\n1.Insert at begining\n2.Display\n3.Insert at end\n4.Insert at a given position\n5.Deletion at start\n6.Deletion at end\n7.Deletion at a given position\n8.Length of linked list\n9.exit\nEnter choice : ");
+        printf("\n1.Insert at begining\n2.Display\n3.Insert at end\n4.Insert at a given position\n5.Deletion at start\n6.Deletion at end\n7.Deletion at a given position\n8.Length of linked list\n9.exit\n10.Search\nEnter choice : ");
         scanf("%d", &ch);
         switch(ch)
         {
@@ -51,6 +52,8 @@ void main()
                     break;
             case 9: printf("Exited");
                     exit(0);
+            case 10: search();
+                     break;
             default : printf("Invalid choice!!");
                       
         }
@@ -190,4 +193,28 @@ void len()
         count++;
     }
     printf("\nLength of linked list till now is %d", count);
+}
+void search()
+{
+    int m, l = 1;
+    printf("\nEnter the element to be searched : ");
+    scanf("%d", &m);
+    node *t1 = head;
+    while(t1 != NULL)
+    {
+        if(t1->data == m)
+        {
+            printf("\nElement found at index : %d", l);
+            break;
+        }
+        else
+        {
+              t1 = t1->next;
+        }
+        l += 1;
+    }
+    if(t1 == NULL)
+    {
+    printf("Element not fount");
+    }
 }
