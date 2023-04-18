@@ -96,8 +96,8 @@ void insert_at_end()
     }
     else
     {
-        temp->next = new;
-        temp = new;
+        new->next = head;
+        head = new;
     }
 }
 void insert_at_pos()
