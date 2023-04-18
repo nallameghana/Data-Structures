@@ -65,8 +65,8 @@ void insert_at_beg()
     }
     else
     {
-        new->next = head;
-        head = new;
+        temp->next = new;
+        temp = new;
     }
 }
 node *getnode()
