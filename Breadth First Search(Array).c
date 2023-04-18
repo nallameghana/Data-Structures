@@ -65,7 +65,7 @@ void breadthfirstsearch(int G[][MAX], int s, int n)
     while(!is_empty())
     {
         int u = de();
-        for(int i = 0; i <= n; i++)
+        for(int i = 1; i <= n; i++)
         {
             if(visited[i] != 1 && G[u][i] == 1)
             {
