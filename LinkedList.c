@@ -65,8 +65,8 @@ void insert_at_beg()
     }
     else
     {
-        temp->next = new;
-        temp = new;
+        new->next = head;
+        head = new;
     }
 }
 node *getnode()
@@ -96,8 +96,8 @@ void insert_at_end()
     }
     else
     {
-        new->next = head;
-        head = new;
+        temp->next = new;
+        temp = new;
     }
 }
 void insert_at_pos()
