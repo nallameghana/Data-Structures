@@ -35,7 +35,7 @@ void main()
             j = 0;
             count++;
         }
-        else if(i == n - m)
+        else if(i > n - m)
         {
             count++;
             printf("Pattern not matched in the given text");
